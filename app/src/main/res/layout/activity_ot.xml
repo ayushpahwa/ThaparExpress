@@ -39,14 +39,4 @@
         android:layout_marginBottom="106dp"
         android:onClick="submit"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:id="@+id/counterText"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/submit"
-        android:layout_alignStart="@+id/submit"
-        android:layout_marginTop="70dp" />
-
 </RelativeLayout>

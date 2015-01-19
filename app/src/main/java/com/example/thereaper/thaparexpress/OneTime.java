@@ -7,13 +7,12 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class OneTime extends Activity {
 
 
-    final int[] counter = {0};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -21,12 +20,8 @@ public class OneTime extends Activity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ot);
-
-        TextView counterText = (TextView) findViewById(R.id.counterText);
-
-        counterText.setText("" + counter[0]);
-
-        if(false) {
+        final int[] counter = {0};
+            if(counter[0] !=0) {
                 Intent i = new Intent(this, Main.class);
                 startActivity(i);
             }else {
@@ -55,9 +50,6 @@ public class OneTime extends Activity {
             }
     }
 
-    public int getCounter(){
-        return counter[0];
-    }
 
 
 }

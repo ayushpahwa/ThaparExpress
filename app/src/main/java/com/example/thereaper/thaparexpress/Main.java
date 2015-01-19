@@ -127,8 +127,28 @@ public class Main extends Activity {
             // display view for selected nav drawer item
             displayView(position);
         }
-       }
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // toggle nav drawer on selecting action bar app icon/title
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        // Handle action bar actions click
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     /***
      * Called when invalidateOptionsMenu() is triggered
@@ -190,11 +210,7 @@ public class Main extends Activity {
     @Override
     public void setTitle(CharSequence title) {
         mTitle = title;
-        try {
-            getActionBar().setTitle(mTitle);
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
+        getActionBar().setTitle(mTitle);
     }
 
     /**
