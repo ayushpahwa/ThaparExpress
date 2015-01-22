@@ -3,7 +3,6 @@ package com.example.thereaper.thaparexpress;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +23,7 @@ public class OneTime extends Activity {
             if(counter[0] !=0) {
                 Intent i = new Intent(this, Main.class);
                 startActivity(i);
+                finish();
             }else {
                 Button submit = (Button) findViewById(R.id.submit);
                 submit.setOnClickListener(new View.OnClickListener() {
@@ -44,8 +44,11 @@ public class OneTime extends Activity {
                         counter[0] += 1;
                         Intent i = new Intent(OneTime.this, Main.class);
                         startActivity(i);
+                        finish();
                     }
                 });
+
+
 
             }
     }

@@ -3,6 +3,7 @@ package com.example.thereaper.thaparexpress;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -167,6 +168,7 @@ public class Main extends Activity {
     private void displayView(int position) {
         // update the main content by replacing fragments
         Fragment fragment = null;
+        Intent i;
         switch (position) {
             case 0:
                 fragment = new Home();
@@ -175,7 +177,8 @@ public class Main extends Activity {
                 fragment = new Societies();
                 break;
             case 2:
-                fragment = new Event();
+                i = new Intent(Main.this,Event.class);
+                startActivity(i);
                 break;
             case 3:
                 fragment = new ThaparLogs();

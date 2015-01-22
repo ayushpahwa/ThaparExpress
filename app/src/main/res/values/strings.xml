@@ -2,7 +2,11 @@
 <resources>
 
     <string name="app_name">Thapar Express</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world">Check out the github profiles and suggest edits.</string>
+    <string name="ghub_web1">Website</string>
+    <string name="ghub_app1">Application</string>
+    <string name="ghub_app">https://github.com/D8thReaper/ThaparExpress</string>
+    <string name="ghub_web">https://github.com/lakshit1001/thaparexpress</string>
     <string name="action_settings">Settings</string>
 
     <string-array name="navDrawer">
