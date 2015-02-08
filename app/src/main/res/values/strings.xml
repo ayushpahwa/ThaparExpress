@@ -7,7 +7,26 @@
     <string name="ghub_app1">Application</string>
     <string name="ghub_app">https://github.com/D8thReaper/ThaparExpress</string>
     <string name="ghub_web">https://github.com/lakshit1001/thaparexpress</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_details">Details</string>
+    <string name="action_feed">Feedback</string>
+    <string name="action_bug">Report bugs</string>
+    <string name="drawer_open">Open slider</string>
+    <string name="drawer_close">Close slider</string>
+    <string name="roll1">Roll No.</string>
+    <string name="roll2"></string>
+    <string name="group1">Group -</string>
+    <string name="group2"></string>
+    <string name="name1">Name -</string>
+    <string name="name2"></string>
+    <string name="year1">Year -</string>
+    <string name="year2"></string>
+    <string name="branch1">Branch -</string>
+    <string name="branch2"></string>
+    <string name="editDetails">Edit</string>
+    <string name="email">Enter your e-Mail address</string>
+    <string name="bugReport">Enter details about the bug you experienced</string>
+    <string name="feedBack">Enter your experience</string>
+    <string name="send">Send</string>
 
     <string-array name="navDrawer">
         <item>Home</item>
@@ -19,14 +38,18 @@
     </string-array>
 
     <array name="navDrawerIcons">
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_home</item>
+        <item>@drawable/ic_societies</item>
+        <item>@drawable/ic_events</item>
+        <item>@drawable/ic_tlogs</item>
+        <item>@drawable/ic_ttable</item>
+        <item>@drawable/ic_contribute</item>
     </array>
 
     <string name="title_activity_one_time">OneTime</string>
+    <string name="title_activity_details">Details</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_feed_back">FeedBack</string>
+    <string name="title_activity_bug">Bug</string>
 
 </resources>

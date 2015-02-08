@@ -1,32 +1,35 @@
-package com.example.thereaper.thaparexpress;
+package com.example.thereaper.thaparexpress.option;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.thereaper.thaparexpress.HelloWebViewClient;
+import com.example.thereaper.thaparexpress.Main;
+import com.example.thereaper.thaparexpress.R;
 import com.example.thereaper.thaparexpress.menu.Bug;
 import com.example.thereaper.thaparexpress.menu.Details;
 import com.example.thereaper.thaparexpress.menu.FeedBack;
-import com.example.thereaper.thaparexpress.option.Contribute;
-import com.example.thereaper.thaparexpress.option.Event;
-import com.example.thereaper.thaparexpress.option.Societies;
-import com.example.thereaper.thaparexpress.option.ThaparLogs;
-import com.example.thereaper.thaparexpress.option.TimeTable;
 
-public class Main extends Activity {
+/**
+ * Created by thereaper on 17/1/15.
+ */
+public class Event extends Activity{
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
-    private android.support.v4.app.ActionBarDrawerToggle mDrawerToggle;
+    private ActionBarDrawerToggle mDrawerToggle;
 
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
@@ -35,12 +38,18 @@ public class Main extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.events);
+        WebView webView = (WebView) findViewById(R.id.webView);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.setWebViewClient(new HelloWebViewClient());
+        webView.loadUrl("http://thaparexpress.in/events.php");
+
         mTitle = mDrawerTitle = getTitle();
         mActivityTitles = getResources().getStringArray(R.array.navDrawer);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_events);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer_events);
 
+        // set a custom shadow that overlays the main content when the drawer opens
         // set up the drawer's list view with items and click listener
         mDrawerList.setAdapter(new ArrayAdapter<String>(this,
                 R.layout.drawer_list_item, mActivityTitles));
@@ -52,10 +61,10 @@ public class Main extends Activity {
 
         // ActionBarDrawerToggle ties together the the proper interactions
         // between the sliding drawer and the action bar app icon
-        mDrawerToggle = new android.support.v4.app.ActionBarDrawerToggle(
+        mDrawerToggle = new ActionBarDrawerToggle(
                 this,                  /* host Activity */
                 mDrawerLayout,         /* DrawerLayout object */
-                R.drawable.ic_societies,  /* nav drawer image to replace 'Up' caret */
+                R.drawable.ic_drawer,  /* nav drawer image to replace 'Up' caret */
                 R.string.drawer_open,  /* "open drawer" description for accessibility */
                 R.string.drawer_close  /* "close drawer" description for accessibility */
         ) {
@@ -71,8 +80,8 @@ public class Main extends Activity {
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -90,6 +99,7 @@ public class Main extends Activity {
         menu.findItem(R.id.Bug).setVisible(!drawerOpen);
         return super.onPrepareOptionsMenu(menu);
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -128,29 +138,30 @@ public class Main extends Activity {
     private void selectItem(int position) {
         // update the main content by replacing option
         Intent i = null;
-        switch (position){
+        switch (position) {
             case 0:
-                i=new Intent(this, Main.class);
+                i = new Intent(this, Main.class);
                 break;
             case 1:
-                i=new Intent(this, Societies.class);
+                i = new Intent(this, Societies.class);
                 break;
             case 2:
-                i=new Intent(this, Event.class);
+                i= new Intent(this, Event.class);
                 break;
             case 3:
-                i=new Intent(this, ThaparLogs.class);
+                i = new Intent(this, ThaparLogs.class);
                 break;
             case 4:
-                i=new Intent(this, TimeTable.class);
+                i = new Intent(this, TimeTable.class);
                 break;
             case 5:
-                i=new Intent(this, Contribute.class);
+                i = new Intent(this, Contribute.class);
                 break;
             default:
 
                 break;
         }
+
 
         startActivity(i);
         mDrawerLayout.closeDrawer(mDrawerList);
@@ -176,5 +187,4 @@ public class Main extends Activity {
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
-
 }

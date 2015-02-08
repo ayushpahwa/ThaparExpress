@@ -5,4 +5,8 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="MenuTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+
+    </style>
+
 </resources>
