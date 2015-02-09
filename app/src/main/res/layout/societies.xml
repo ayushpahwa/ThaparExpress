@@ -5,10 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <!-- The main content view -->
-    <FrameLayout
-        android:id="@+id/content_frame_societies"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+
+    <android.support.v4.view.ViewPager
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pagerSocieties"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+        <android.support.v4.view.PagerTitleStrip
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_gravity="top"
+            android:id="@+id/titleTabSocieties"
+            style="@style/viewPagerStripTitle"
+            >
+
+
+        </android.support.v4.view.PagerTitleStrip>
+    </android.support.v4.view.ViewPager>
+
     <!-- The navigation drawer -->
     <ListView android:id="@+id/left_drawer_societies"
         android:layout_width="240dp"

@@ -52,7 +52,6 @@ public class OneTime extends Activity {
                 getYear(abc);
                getBranch();
                getName();
-               Toast.makeText(OneTime.this,year,Toast.LENGTH_LONG).show();
                editor.putString("name",name);
                editor.putString("branch",branch);
                editor.putString("year",year);

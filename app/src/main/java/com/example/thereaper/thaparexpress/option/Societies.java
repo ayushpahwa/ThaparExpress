@@ -1,10 +1,12 @@
 package com.example.thereaper.thaparexpress.option;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,6 +18,7 @@ import android.widget.ListView;
 
 import com.example.thereaper.thaparexpress.Main;
 import com.example.thereaper.thaparexpress.R;
+import com.example.thereaper.thaparexpress.SectionsPagerAdapter;
 import com.example.thereaper.thaparexpress.menu.Bug;
 import com.example.thereaper.thaparexpress.menu.Details;
 import com.example.thereaper.thaparexpress.menu.FeedBack;
@@ -23,7 +26,7 @@ import com.example.thereaper.thaparexpress.menu.FeedBack;
 /**
  * Created by thereaper on 17/1/15.
  */
-public class Societies extends Activity {
+public class Societies extends FragmentActivity {
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -33,10 +36,16 @@ public class Societies extends Activity {
     private CharSequence mTitle;
     private String[] mActivityTitles;
 
+    FragmentManager fm = getSupportFragmentManager();
+    SectionsPagerAdapter mSectionPagerAdapter = new SectionsPagerAdapter(fm);
+    ViewPager mPager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.societies);
+        mPager = (ViewPager) findViewById(R.id.pagerSocieties);
+        mPager.setAdapter(mSectionPagerAdapter);
 
         mTitle = mDrawerTitle = getTitle();
         mActivityTitles = getResources().getStringArray(R.array.navDrawer);

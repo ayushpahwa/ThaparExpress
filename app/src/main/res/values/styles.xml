@@ -9,4 +9,12 @@
 
     </style>
 
+    <style name="viewPagerStripTitle" >
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:background">#000000</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
 </resources>
