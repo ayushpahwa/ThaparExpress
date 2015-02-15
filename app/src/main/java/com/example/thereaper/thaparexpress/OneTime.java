@@ -37,43 +37,48 @@ public class OneTime extends Activity {
             startActivity(i);
             finish();
         }else {
-           Button submit = (Button) findViewById(R.id.submit);
-           submit.setOnClickListener(new View.OnClickListener() {
+            Button submit = (Button) findViewById(R.id.submit);
+            submit.setOnClickListener(new View.OnClickListener() {
 
-           @Override
-           public void onClick(View v) {
-            String roll;
-            EditText rollNo = (EditText) findViewById(R.id.rollNo);
-            EditText group = (EditText) findViewById(R.id.groupNo);
+                @Override
+                public void onClick(View v) {
+                    String roll;
+                    EditText rollNo = (EditText) findViewById(R.id.rollNo);
+                    EditText group = (EditText) findViewById(R.id.groupNo);
 
-            roll= rollNo.getText().toString();
-               int abc = 0;
-               abc = Integer.parseInt(roll);
-                getYear(abc);
-               getBranch();
-               getName();
-               editor.putString("name",name);
-               editor.putString("branch",branch);
-               editor.putString("year",year);
-               editor.putInt("roll",abc);
-               editor.putString("group",group.getText().toString());
-               editor.apply();
+                    roll= rollNo.getText().toString();
+                    int abc = 0;
+                    try {
+                        abc = Integer.parseInt(roll);
+                    } catch (NumberFormatException e) {
+                        abc = 101412011;
 
-               //TODO: Change if condition for the EditTexts to be not null.
-               if (false) {
-                   Toast.makeText(OneTime.this,"Please enter a valid roll number and group",Toast.LENGTH_LONG).show();
-               } else {
-                   counter[0] = 1;
-                   Intent i = new Intent(OneTime.this, Main.class);
-                   try {
-                       savedInstanceState.putInt(savedCounter,counter[0]);
-                   } catch (NullPointerException e) {
-                       e.printStackTrace();
-                   }
-                   startActivity(i);
-                   finish();
-               }
-           }});
+                    }
+                    getYear(abc);
+                    getBranch();
+                    getName();
+                    editor.putString("name",name);
+                    editor.putString("branch",branch);
+                    editor.putString("year",year);
+                    editor.putInt("roll",abc);
+                    editor.putString("group",group.getText().toString());
+                    editor.apply();
+
+                    //TODO: Change if condition for the EditTexts to be not null.
+                    if (false) {
+                        Toast.makeText(OneTime.this,"Please enter a valid roll number and group",Toast.LENGTH_LONG).show();
+                    } else {
+                        counter[0] = 1;
+                        Intent i = new Intent(OneTime.this, Main.class);
+                        try {
+                            savedInstanceState.putInt(savedCounter,counter[0]);
+                        } catch (NullPointerException e) {
+                            e.printStackTrace();
+                        }
+                        startActivity(i);
+                        finish();
+                    }
+                }});
         }
     }
 

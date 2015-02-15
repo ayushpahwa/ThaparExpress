@@ -1,16 +1,14 @@
 package com.example.thereaper.thaparexpress.menu;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.thereaper.thaparexpress.Global;
 import com.example.thereaper.thaparexpress.R;
 
 public class FeedBack extends ActionBarActivity {
@@ -25,8 +23,9 @@ public class FeedBack extends ActionBarActivity {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Global global = new Global();
-                int rollNo = global.getRoll_No();
+                int rollNo;
+                SharedPreferences myPrefs = getSharedPreferences("data", 0);
+                rollNo = myPrefs.getInt("roll",0);
                 EditText Bug = (EditText) findViewById(R.id.detailFeed);
                 String message, email;
                 email = "ayushpahwa96@gmail.com";
