@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_row_selector"
+    android:padding="8dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="lol"
+        android:textStyle="bold"
+        android:textSize="@dimen/tClass"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="5dp"
+        android:id="@+id/tableClass" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="lel"
+        android:layout_marginTop="30dp"
+        android:id="@+id/tableRoom"
+        android:layout_marginLeft="5dp"
+        android:textSize="@dimen/tRoom"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/tTeacher"
+        android:id="@+id/tableTeacher"
+        android:text="lil"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"/>
+</RelativeLayout>

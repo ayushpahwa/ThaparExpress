@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import com.example.thereaper.thaparexpress.R;
 
+//Completed on 18/2/2015 by Ayush Pahwa
+
 public class FeedBack extends ActionBarActivity {
 
 
@@ -33,7 +35,7 @@ public class FeedBack extends ActionBarActivity {
                 message = Bug.getText().toString();
                 Intent i = new Intent(Intent.ACTION_SEND);
                 i.setType("plain/text");
-                i.putExtra(Intent.EXTRA_SUBJECT,"Bug report from" + rollNo);
+                i.putExtra(Intent.EXTRA_SUBJECT,"FeedBack from " + rollNo);
                 i.putExtra(Intent.EXTRA_EMAIL, mail);
                 i.putExtra(Intent.EXTRA_TEXT, message);
                 try {

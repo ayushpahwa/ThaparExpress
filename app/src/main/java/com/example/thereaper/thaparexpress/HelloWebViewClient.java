@@ -5,7 +5,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 /**
- * Created by Ayush Pahwa on 20/1/15.
+ *Completed on 18/02/2015 by Ayush Pahwa
  */
 public class HelloWebViewClient extends WebViewClient {
 

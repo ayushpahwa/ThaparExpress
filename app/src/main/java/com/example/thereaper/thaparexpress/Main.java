@@ -36,6 +36,9 @@ public class Main extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //TODO: Create the main page layout.
+
         mTitle = mDrawerTitle = getTitle();
         mActivityTitles = getResources().getStringArray(R.array.navDrawer);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);

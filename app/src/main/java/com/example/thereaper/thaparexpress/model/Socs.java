@@ -1,8 +1,9 @@
 package com.example.thereaper.thaparexpress.model;
 
 /**
- * Created by Ayush Pahwa on 10/2/15.
+ * Completed on 18/2/2015 by Ayush Pahwa
  */
+
 public class Socs {
     private String name,desc;
 

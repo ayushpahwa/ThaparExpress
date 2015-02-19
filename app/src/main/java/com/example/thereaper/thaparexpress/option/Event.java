@@ -14,6 +14,7 @@ import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.thereaper.thaparexpress.HelloWebViewClient;
 import com.example.thereaper.thaparexpress.Main;
@@ -34,15 +35,17 @@ public class Event extends Activity{
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
     private String[] mActivityTitles;
+    WebView webView;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.events);
-        WebView webView = (WebView) findViewById(R.id.webView);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.setWebViewClient(new HelloWebViewClient());
-        webView.loadUrl("http://thaparexpress.in/events.php");
+
+        //TODO: Upgrade from webView to dynamically updating listView.
+
+        getWebView(savedInstanceState);
 
         mTitle = mDrawerTitle = getTitle();
         mActivityTitles = getResources().getStringArray(R.array.navDrawer);
@@ -80,6 +83,17 @@ public class Event extends Activity{
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
+    }
+
+    private void getWebView(Bundle savedInstanceState) {
+        webView = (WebView) findViewById(R.id.webView);
+        webView.setWebViewClient(new HelloWebViewClient());
+        if (savedInstanceState!=null){
+            webView.restoreState(savedInstanceState);
+        }else {
+            webView.loadUrl("http://thaparexpress.in/events.php");
+            onSaveInstanceState(savedInstanceState);
+        }
     }
 
 
@@ -186,5 +200,10 @@ public class Event extends Activity{
         super.onConfigurationChanged(newConfig);
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        webView.saveState(outState);
     }
 }

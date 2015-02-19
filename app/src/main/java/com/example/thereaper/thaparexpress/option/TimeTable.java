@@ -15,11 +15,18 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.thereaper.thaparexpress.CustomListAdapter;
+import com.example.thereaper.thaparexpress.CustomListAdapterTTable;
 import com.example.thereaper.thaparexpress.Main;
 import com.example.thereaper.thaparexpress.R;
 import com.example.thereaper.thaparexpress.menu.Bug;
 import com.example.thereaper.thaparexpress.menu.Details;
 import com.example.thereaper.thaparexpress.menu.FeedBack;
+import com.example.thereaper.thaparexpress.model.Table;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by thereaper on 17/1/15.
@@ -33,6 +40,15 @@ public class TimeTable extends Activity {
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
     private String[] mActivityTitles;
+    private List<Table> tableList = new ArrayList<Table>();
+    private ListView listView;
+    private CustomListAdapterTTable adapterTTable;
+
+    Calendar c = Calendar.getInstance();
+    int day = c.get(Calendar.DAY_OF_WEEK);
+    int timeHour = c.get(Calendar.HOUR);
+    int timeMinutes = c.get(Calendar.MINUTE);
+    String dayS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +59,44 @@ public class TimeTable extends Activity {
         mActivityTitles = getResources().getStringArray(R.array.navDrawer);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_ttable);
         mDrawerList = (ListView) findViewById(R.id.left_drawer_ttable);
+        listView = (ListView) findViewById(R.id.lvTTable);
+        adapterTTable = new CustomListAdapterTTable(this,tableList);
+        listView.setAdapter(adapterTTable);
+
+        switch (day){
+            case 1:
+                dayS="Sunday";
+                break;
+            case 2:
+                dayS="Monday";
+                break;
+            case 3:
+                dayS="Tuesday";
+                break;
+            case 4:
+                dayS="Wednesday";
+                break;
+            case 5:
+                dayS="Thursday";
+                break;
+            case 6:
+                dayS="Friday";
+                break;
+            case 7:
+                dayS="Saturday";
+                break;
+        }
+
+        for (int i=0;i<15;i++){
+            Table table = new Table();
+            table.setTClass(""+dayS);
+            table.setTRoom(""+timeHour+timeMinutes);
+            table.setTTeacher(""+day);
+
+            tableList.add(table);
+        }
+
+        adapterTTable.notifyDataSetChanged();
 
 
         // set up the drawer's list view with items and click listener

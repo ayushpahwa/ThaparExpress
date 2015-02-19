@@ -9,31 +9,32 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.thereaper.thaparexpress.model.Socs;
+import com.example.thereaper.thaparexpress.model.Table;
 
 import java.util.List;
 
 /**
  *Completed on 18/02/2015 by Ayush Pahwa
  */
-public class CustomListAdapter extends BaseAdapter {
+public class CustomListAdapterTTable extends BaseAdapter {
 
     private Activity activity;
     private LayoutInflater inflater;
-    private List<Socs> socItems;
+    private List<Table> tableItems;
 
-    public CustomListAdapter(Activity activity, List<Socs> socItems){
+    public CustomListAdapterTTable(Activity activity, List<Table> socItems){
         this.activity = activity;
-        this.socItems = socItems;
+        this.tableItems = socItems;
     }
 
     @Override
     public int getCount() {
-        return socItems.size();
+        return tableItems.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return socItems.get(position);
+        return tableItems.get(position);
     }
 
     @Override
@@ -48,15 +49,17 @@ public class CustomListAdapter extends BaseAdapter {
         if (inflater==null)
             inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (convertView==null)
-            convertView = inflater.inflate(R.layout.list_row,null);
+            convertView = inflater.inflate(R.layout.list_row_table,null);
 
-        TextView nameL = (TextView) convertView.findViewById(R.id.socName);
-        TextView descL = (TextView) convertView.findViewById(R.id.socDesc);
+        TextView classL = (TextView) convertView.findViewById(R.id.tableClass);
+        TextView roomL = (TextView) convertView.findViewById(R.id.tableRoom);
+        TextView teacherL = (TextView) convertView.findViewById(R.id.tableTeacher);
 
-        Socs socs = socItems.get(position);
+        Table table = tableItems.get(position);
 
-        nameL.setText(socs.getName());
-        descL.setText(socs.getDesc());
+        classL.setText(table.getTClass());
+        roomL.setText(table.getTRoom());
+        teacherL.setText(table.getTTeacher());
 
         return convertView;
     }

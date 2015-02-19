@@ -3,6 +3,9 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <dimen name="title">20dp</dimen>
-    <dimen name="desc">15dp</dimen>
+    <dimen name="title">20sp</dimen>
+    <dimen name="desc">15sp</dimen>
+    <dimen name="tClass">20sp</dimen>
+    <dimen name="tRoom">18sp</dimen>
+    <dimen name="tTeacher">23sp</dimen>
 </resources>

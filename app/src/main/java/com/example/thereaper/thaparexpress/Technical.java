@@ -1,18 +1,23 @@
 package com.example.thereaper.thaparexpress;
 
+import android.app.ListActivity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.thereaper.thaparexpress.model.Socs;
+import com.example.thereaper.thaparexpress.option.Societies;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,6 +35,7 @@ public class Technical extends Fragment {
     private List<Socs> socList = new ArrayList<>();
     private ListView listView;
     private CustomListAdapter adapter;
+    int listSize;
 
 
     @Override
@@ -41,8 +47,13 @@ public class Technical extends Fragment {
         listView.setAdapter(adapter);
 
         JsonArrayRequest socRequest = new JsonArrayRequest(url,new Response.Listener<JSONArray>() {
+
             @Override
             public void onResponse(JSONArray response) {
+
+                SharedPreferences myPrefs = Technical.this.getActivity().getSharedPreferences("data",0);
+                SharedPreferences.Editor editor = myPrefs.edit();
+                listSize = response.length();
 
                 for (int i=0;i<response.length() ; i++){
                     try {
@@ -50,12 +61,15 @@ public class Technical extends Fragment {
                         Socs socs = new Socs();
                         socs.setDesc(obj.getString("rating"));
                         socs.setName(obj.getString("rating"));
+                        editor.putString("rating "+i,obj.getString("rating"));
+                        editor.putString("title "+i,obj.getString("title"));
 
                         socList.add(socs);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
+                editor.commit();
                 adapter.notifyDataSetChanged();
             }
 
@@ -72,6 +86,15 @@ public class Technical extends Fragment {
             e.printStackTrace();
         }
 
+        //TODO: Create an OnClickListner for the ListView.
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Toast.makeText(Technical.this.getActivity(),""+position,Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return rootView;
 

@@ -24,7 +24,7 @@ import com.example.thereaper.thaparexpress.menu.Details;
 import com.example.thereaper.thaparexpress.menu.FeedBack;
 
 /**
- * Created by thereaper on 17/1/15.
+ *Completed on 18/02/2015 by Ayush Pahwa
  */
 public class Societies extends FragmentActivity {
 
@@ -36,9 +36,11 @@ public class Societies extends FragmentActivity {
     private CharSequence mTitle;
     private String[] mActivityTitles;
 
+
     FragmentManager fm = getSupportFragmentManager();
     SectionsPagerAdapter mSectionPagerAdapter = new SectionsPagerAdapter(fm);
     ViewPager mPager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

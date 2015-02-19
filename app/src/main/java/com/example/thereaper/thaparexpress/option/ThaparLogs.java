@@ -40,6 +40,8 @@ public class ThaparLogs extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tlogs);
 
+        //TODO: Add a webView to the ThaparLogs page.
+
         mTitle = mDrawerTitle = getTitle();
         mActivityTitles = getResources().getStringArray(R.array.navDrawer);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_tlogs);

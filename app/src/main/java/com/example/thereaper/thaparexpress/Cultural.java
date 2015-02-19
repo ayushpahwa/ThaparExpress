@@ -63,11 +63,8 @@ public class Cultural extends Fragment {
                 VolleyLog.d("ERROR" + error.getMessage());
             }
         });
-        try {
-            AppController.getInstance().addToRequestQueue(socRequest);
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
+
+        AppController.getInstance().addToRequestQueue(socRequest);
 
         return rootView;
 

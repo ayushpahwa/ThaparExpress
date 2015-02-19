@@ -8,7 +8,21 @@
     <FrameLayout
         android:id="@+id/content_frame_ttable"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:background="@color/list_divider">
+
+        <ListView
+            android:layout_width="fill_parent"
+            android:divider="@color/list_divider"
+            android:dividerHeight="4dp"
+            android:listSelector="@drawable/list_row_selector"
+            android:layout_margin="4dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/lvTTable"
+            android:clickable="true"
+            />
+
+    </FrameLayout>
     <!-- The navigation drawer -->
     <ListView android:id="@+id/left_drawer_ttable"
         android:layout_width="240dp"

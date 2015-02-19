@@ -11,11 +11,13 @@ import android.widget.TextView;
 import com.example.thereaper.thaparexpress.OneTime;
 import com.example.thereaper.thaparexpress.R;
 
+
 public class Details extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //TODO: Change the UI of the details class.
         setContentView(R.layout.activity_details);
         TextView roll = (TextView) findViewById(R.id.roll1);
         TextView branch = (TextView) findViewById(R.id.Branch1);

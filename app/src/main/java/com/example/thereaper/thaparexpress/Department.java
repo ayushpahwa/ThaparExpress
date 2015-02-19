@@ -64,11 +64,8 @@ public class Department extends Fragment {
             }
         });
 
-        try {
-            AppController.getInstance().addToRequestQueue(socRequest);
-        } catch (NullPointerException e) {
-            Toast.makeText(this.getActivity(),"Gand mara",Toast.LENGTH_SHORT).show();
-        }
+        AppController.getInstance().addToRequestQueue(socRequest);
+
 
         return rootView;
     }
