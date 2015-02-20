@@ -1,12 +1,16 @@
 package com.example.thereaper.thaparexpress;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -22,6 +26,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentChapters extends Fragment {
+
+    private int listSize,i;
 
     public StudentChapters(){}
 
@@ -44,7 +50,7 @@ public class StudentChapters extends Fragment {
             @Override
             public void onResponse(JSONArray response) {
 
-                for (int i=0;i<response.length() ; i++){
+                for (i=0;i<response.length() ; i++){
                     try {
                         JSONObject obj = response.getJSONObject(i);
                         Socs socs = new Socs();
@@ -57,6 +63,8 @@ public class StudentChapters extends Fragment {
                     }
                 }
                 adapter.notifyDataSetChanged();
+                listSize = i;
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -66,6 +74,20 @@ public class StudentChapters extends Fragment {
         });
 
         AppController.getInstance().addToRequestQueue(socRequest);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String socName = ((TextView) view.findViewById(R.id.socName)).getText().toString();
+                String socDesc = ((TextView) view.findViewById(R.id.socDesc)).getText().toString();
+                Intent intent = new Intent(StudentChapters.this.getActivity(),SocietiesDetails.class);
+                intent.putExtra("socName",socName);
+                intent.putExtra("socDesc",socDesc);
+
+                startActivity(intent);
+            }
+        });
 
         return rootView;
 

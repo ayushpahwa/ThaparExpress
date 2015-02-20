@@ -1,6 +1,7 @@
 package com.example.thereaper.thaparexpress;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -51,8 +53,6 @@ public class Technical extends Fragment {
             @Override
             public void onResponse(JSONArray response) {
 
-                SharedPreferences myPrefs = Technical.this.getActivity().getSharedPreferences("data",0);
-                SharedPreferences.Editor editor = myPrefs.edit();
                 listSize = response.length();
 
                 for (int i=0;i<response.length() ; i++){
@@ -61,15 +61,12 @@ public class Technical extends Fragment {
                         Socs socs = new Socs();
                         socs.setDesc(obj.getString("rating"));
                         socs.setName(obj.getString("rating"));
-                        editor.putString("rating "+i,obj.getString("rating"));
-                        editor.putString("title "+i,obj.getString("title"));
 
                         socList.add(socs);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
-                editor.commit();
                 adapter.notifyDataSetChanged();
             }
 
@@ -92,7 +89,13 @@ public class Technical extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Toast.makeText(Technical.this.getActivity(),""+position,Toast.LENGTH_SHORT).show();
+                String socName = ((TextView) view.findViewById(R.id.socName)).getText().toString();
+                String socDesc = ((TextView) view.findViewById(R.id.socDesc)).getText().toString();
+                Intent intent = new Intent(Technical.this.getActivity(),SocietiesDetails.class);
+                intent.putExtra("socName",socName);
+                intent.putExtra("socDesc",socDesc);
+
+                startActivity(intent);
             }
         });
 

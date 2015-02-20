@@ -1,11 +1,14 @@
 package com.example.thereaper.thaparexpress;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -30,6 +33,7 @@ public class Department extends Fragment {
     private List<Socs> socList = new ArrayList<>();
     private ListView listView;
     private CustomListAdapter adapter;
+    int listSize;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,6 +58,7 @@ public class Department extends Fragment {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+                    listSize = i;
                 }
                 adapter.notifyDataSetChanged();
             }
@@ -65,6 +70,20 @@ public class Department extends Fragment {
         });
 
         AppController.getInstance().addToRequestQueue(socRequest);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String socName = ((TextView) view.findViewById(R.id.socName)).getText().toString();
+                String socDesc = ((TextView) view.findViewById(R.id.socDesc)).getText().toString();
+                Intent intent = new Intent(Department.this.getActivity(),SocietiesDetails.class);
+                intent.putExtra("socName",socName);
+                intent.putExtra("socDesc",socDesc);
+
+                startActivity(intent);
+            }
+        });
 
 
         return rootView;

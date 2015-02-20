@@ -45,6 +45,10 @@ public class Event extends Activity{
 
         //TODO: Upgrade from webView to dynamically updating listView.
 
+        if (false){
+            getFinalView();
+        }
+
         getWebView(savedInstanceState);
 
         mTitle = mDrawerTitle = getTitle();
@@ -82,6 +86,10 @@ public class Event extends Activity{
             }
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+    }
+
+    private void getFinalView() {
 
     }
 
