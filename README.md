@@ -7,3 +7,5 @@ This is the first upload and some bugs and many errors. I will keep updating the
 Just clone the project, compile and run.
 
 Cheers! :D 
+
+Edit: As of now the application is functioning and is currently waiting for the required database.
